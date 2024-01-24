@@ -1,0 +1,322 @@
+<<!DOCTYPE html>
+<html>
+<head>
+    <title>Draggable Elements</title>
+
+
+
+    <style>
+        @font-face {
+            font-family: 'Cumulus';
+            src: url('CirrusCumulus.otf') format('opentype');
+          }
+
+
+
+
+html {
+  font-family: 'Cumulus';
+}
+
+
+
+       .draggable {
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+            filter: drop-shadow(1px 1px 2px);
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.6s; /* 드래그 가능한 요소에 트랜지션 추가 */
+        }
+
+        .draggable:hover {
+          transform: rotateY(15deg);
+          z-index: 999;
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 0.6s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 50px;
+            color: white;
+        }
+
+        .back {
+            display: none;
+            transform: rotateY(180deg); /* 초기 회전 */
+            text-align: left; /* 텍스트 중앙 정렬 */
+            transform-origin: center; /* 회전 중심점 설정 */
+            background-color: white;
+            color: black;
+            padding: 5px;
+            font-size: 15pt;
+            filter: blur(0px);
+            overflow: scroll;
+        }
+
+
+        .back:hover {
+            filter: blur(3px);
+        }
+
+
+
+
+
+
+        /* .flipped 클래스 추가 */
+        .draggable.flipped {
+            transform: rotateY(360deg);
+            background-color: green;
+        }
+
+        .draggable.flipped .back {
+            display: block;
+            transform: rotateY(0deg); /* 뒤집힌 상태에서 뒷면 텍스트를 정방향으로 돌리기 */
+        }
+
+        .draggable.flipped .front {
+            display: none;
+        }
+
+
+
+#elem1 {
+  top: 30%;
+  left: 2%;
+  rotate: 7;
+  background-image: url(m1.png);
+  background-size: cover;
+}
+
+#elem1:hover{
+  background-image: url(c1.png);
+  transition: all ease 1s;
+}
+
+
+#elem2 {
+  top: 30%;
+  left: 70%;
+  background-image: url(m2.png);
+  background-size: cover;
+}
+
+#elem2:hover{
+  background-image: url(c2.png);
+  transition: all ease 1s;
+}
+
+
+#elem3 {
+  top: 65%;
+  left: 60%;
+  background-image: url(m3.png);
+  background-size: cover;
+}
+
+#elem3:hover{
+  background-image: url(c3.png);
+  transition: all ease 1s;
+}
+
+#elem4 {
+  top: 65%;
+  left: 35%;
+  background-image: url(m4.png);
+  background-size: cover;
+}
+
+#elem4:hover{
+  background-image: url(c4.png);
+  transition: all ease 1s;
+}
+
+
+#elem5 {
+  top: 60%;
+  left: 10%;
+  background-image: url(m5.png);
+  background-size: cover;
+}
+
+#elem5:hover{
+  background-image: url(c5.png);
+  transition: all ease 1s;
+}
+
+
+#elem6 {
+  top: 5%;
+  left: 80%;
+  background-image: url(m6.png);
+  background-size: cover;
+}
+
+#elem6:hover{
+  background-image: url(c6.png);
+  transition: all ease 1s;
+}
+
+
+#elem7 {
+  top: 24%;
+  left: 50%;
+  background-image: url(m7.png);
+  background-size: cover;
+}
+
+#elem7:hover{
+  background-image: url(c7.png);
+  transition: all ease 1s;
+}
+
+#elem8 {
+  top: 30%;
+  left: 25%;
+  background-image: url(m8.png);
+  background-size: cover;
+}
+
+#elem8:hover{
+  background-image: url(c8.png);
+  transition: all ease 1s;
+}
+
+#elem9 {
+  top: 20%;
+  left: 10%;
+  background-image: url(m9.png);
+  background-size: cover;
+}
+
+#elem9:hover{
+  background-image: url(c9.png);
+  transition: all ease 1s;
+}
+
+h1 {
+  text-align: center;
+  background-color: blue;
+  color: white;
+  margin: 0 auto;
+  width: 50vw;
+}
+
+
+
+
+</style>
+</head>
+
+<body>
+
+
+<h1>This content deals with depictions of child and infant violence, animal cruelty, and trauma. Click on a card to flip it over, and move your mouse away to read the text. Be careful what you read.</h1>
+
+
+
+    <div class="draggable" id="elem1" draggable="true">
+    <div class="front">1</div>
+        <div class="back" id="elem1-back">
+        In one video, believed to be a gang-related killing in Africa, a group of men dragged a man into the woods and repeatedly slashed his throat with a large knife until blood covered the camera lens. _Lester</div>
+
+    </div>
+
+    <div class="draggable" id="elem2" draggable="true">
+        <div class="front">2</div>
+        <div class="back" id="elem2-back">
+        Two teenagers come across an iguana on the street, and one of the kids grabbed the iguana by the tail, and they start to smash the iguana onto the ground. and you can hear the igunana’s screaming. they keep slamming the igunana onto the ground, and the iguana just kept screaming and screaming, and then the screaming stopped._Shawn Speagle</div>
+    </div>
+
+    <div class="draggable" id="elem3" draggable="true">
+          <div class="front">3</div>
+        <div class="back" id="elem3-back">
+        - Videos of the babysitter choking a toddler to death, and giving bloody noses to babies._Shawn Speagle</div>
+    </div>
+
+    <div class="draggable" id="elem4" draggable="true">
+          <div class="front">4</div>
+        <div class="back" id="elem4-back">
+        - Employees have been found having sex inside stairwells and a room reserved for lactating mothers, in what one employee describes as “trauma bonding.”</div>
+    </div>
+
+    <div class="draggable" id="elem5" draggable="true">
+          <div class="front">5</div>
+        <div class="back" id="elem5-back">
+        People had a puppy with a rope hanging it. a pit of pigs and they threw fire and you can hear the pigs screaming._Michelle Bennetti</div>
+    </div> 
+
+    <div class="draggable" id="elem6" draggable="true">
+          <div class="front">6</div>
+        <div class="back" id="elem6-back">Twin babies from Saudi Arabia, and the mother was dropping the baby on the ground and then choked the baby. you can hear the baby gurgling, and trying to breathe._Melynda Johnson</div>
+    </div>
+
+    <div class="draggable" id="elem7" draggable="true">
+          <div class="front">7</div>
+        <div class="back" id="elem7-back">
+        Moderators cope with seeing traumatic images and videos by telling dark jokes about committing suicide, and then smoking weed during breaks to numb their emotions. Moderators are routinely high at work.</div>
+    </div>
+
+    <div class="draggable" id="elem8" draggable="true">
+          <div class="front">8</div>
+        <div class="back" id="elem8-back">
+        - The job also changed the way he saw the world. After he saw so many videos saying that 9/11 was not a terrorist attack, he came to believe them. Conspiracy videos about the Las Vegas massacre were also very persuasive, he says, and he now believes that multiple shooters were responsible for the attack. (The FBI found that the massacre was the work of a single gunman.)</div>
+    </div>
+
+    <div class="draggable" id="elem9" draggable="true">
+          <div class="front">9</div>
+        <div class="back" id="elem9-back">
+        - One, named Randy, would sometimes return to his car at the end of a workday to find moderators waiting for him. Five or six times over the course of a year, someone would attempt to intimidate him into changing his ruling. “They would confront me in the parking lot and tell me they were going to beat the shit out of me,” he says. “There wasn’t even a single instance where it was respectful or nice. It was just that you audited me wrong! That was a boob! That was full areola, come on man!”</div>
+    </div>   
+
+
+
+     <script>
+        let dragged;
+        const elements = document.querySelectorAll('.draggable');
+
+        elements.forEach(element => {
+            element.addEventListener('dragstart', dragStart);
+            element.addEventListener('dragend', dragEnd);
+            element.addEventListener('click', flipCard); // 카드를 클릭했을 때 뒤집는 이벤트 추가
+        });
+
+        function dragStart(event) {
+            dragged = event.target;
+            event.dataTransfer.setData('text/plain', null);
+        }
+
+        function dragEnd(event) {
+            dragged = null;
+        }
+
+        function flipCard(event) {
+            const card = event.currentTarget;
+            card.classList.toggle('flipped'); // 클릭한 카드를 뒤집기 위해 클래스를 토글
+        }
+
+        document.addEventListener('dragover', function(event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener('drop', function(event) {
+            event.preventDefault();
+            if (dragged) {
+                dragged.style.position = 'absolute';
+                dragged.style.left = (event.clientX - dragged.clientWidth / 2) + 'px';
+                dragged.style.top = (event.clientY - dragged.clientHeight / 2) + 'px';
+            }
+        });
+    </script>
+
+</body>
+</html>

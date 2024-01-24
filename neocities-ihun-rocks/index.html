@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <style>
+
+                @font-face {
+            font-family: 'mori';
+            src: url('PPMori-SemiBold.otf') format('opentype');}
+
+        a {
+            color: inherit;
+
+        }
+
+
+        body {
+            margin: 0;
+            font-family: 'mori';
+            display: flex;
+            overflow: hidden;
+
+        }
+
+        body::-webkit-scrollbar {
+    width: 0;  /* 스크롤 바의 너비를 0으로 설정 */
+            }
+        img {
+            filter: drop-shadow(1px 1px 5px);
+          
+        }
+
+        .content img {
+            margin: 30px;
+        }
+
+
+
+        #sidebar {
+            flex: 1;
+            background-color: #333;
+            color: white;
+            padding: 0px;
+            display: flex;
+            flex-direction: column; /* 열 방향으로 배치 */
+           
+        }
+
+        #sidebar1 {
+            height: 56vh;
+            background-color: white;
+            border-right: 2px solid black;
+            border-bottom: 2px solid black;
+            background-image: url("shen1.jpg");
+            background-size: 370px;
+
+        }
+
+        #sidebar2 {
+            height: 44vh;
+            background-color: white;
+            border-right: 2px solid black;
+            
+        }
+
+        #rotate {
+            animation: rotate 10s linear infinite;
+
+        }
+
+    @keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+        #rotate:hover {
+            transition: ;
+        }
+
+        .accordion-container {
+            display: flex;
+            flex: 4;
+            height: 100vh;
+        }
+
+        .column {
+            flex: 1;
+            overflow: hidden;
+            transition: flex 0.5s;
+            border-right: 2px solid black;
+            box-sizing: border-box;
+            position: relative;
+
+        }
+
+        .column:hover {
+            cursor: pointer;
+            background-color: #f5f5f5;
+        }
+
+        .expanded {
+            flex: 20;
+        }
+
+        .content {
+            padding: 0px;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow-y: auto;
+            
+            margin: 5px;
+            margin-top: 70px;
+            margin-right: 40px;
+
+        }
+
+        .content::-webkit-scrollbar {
+        display: none;
+
+}
+
+        .content::scrollbar {
+        display: none;
+}
+
+
+        .expanded .content {
+            display: block;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+
+
+        h2 {
+            padding: 10px;
+            margin: 0 auto;
+
+        }
+
+
+        p {
+            padding: 10px;
+            margin: ;
+            font-size: 25px;
+            line-height: 130%;
+
+
+        }
+
+        h6 {
+            padding: 10px;
+            margin: ;
+            font-size: 20px;
+            line-height: 130%;
+            text-decoration: underline;
+
+        }
+
+        .un {
+            text-decoration: underline;
+            padding: 10px;
+            margin: 0;
+            font-size: 25px;
+            line-height: 130%;
+        }
+
+.line {
+    width: 100vw;
+    height: 2px;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const columns = document.querySelectorAll('.column');
+
+            columns.forEach(column => {
+                column.addEventListener('click', function () {
+                    const isExpanded = this.classList.contains('expanded');
+                    columns.forEach(c => {
+                        c.classList.remove('expanded');
+                        c.querySelector('.content').style.display = 'none';
+                    });
+                    if (!isExpanded) {
+                        this.classList.add('expanded');
+                        this.querySelector('.content').style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <title>Accordion 페이지</title>
+</head>
+
+<body>
+
+
+    <div id="sidebar">
+
+    <span id="sidebar1">
+        <h2></h2>
+        <p></p>
+    </span>
+    <span id="sidebar2">
+        <p><a href="cha.html"><img id="rotate" src="btn1.png" height="350px"></a></p>
+    </span>
+
+
+    </div>
+
+    <div class="accordion-container">
+
+
+        <div class="column">
+            <h2>Sacrificial Data</h2>
+            <div class="content">
+            <p> Once upon a time, there was a god named Shennong… He was one of the first three emperors, the first of all Chinese people. And his name- 神農 means God Farmer, God of Agriculture. He is said to be the father of Chinese medicine and pharmacy, having tasted all the grasses in the beginning of time, dying and coming back to life 70 times, categorizing all kind of grasses as edible and inedible, and writing them down in a book called the 神農本草經. (Although he is a legendary figure, the book actually existed and has been passed down to modern times and is said to be the beginning of Chinese medicine.) </p>
+
+                <p>This project begins with 神農Shennong, the god of medicine. In ancient Chinese legend, 神農Shennong was a sun god and ancestor who was born human but grew up to be a combination of a cow and a dragon. This early labelling by 神農Shennong is similar to the human labour of 'labelling' AI in the information society. As we know, AI is trained on "data" and assembles new outcomes. While AI models have evolved and may no longer use human labels, human roles and labor are still important. Even after training and tuning, there is also the labour of data cleaning, which involves checking additional data collected automatically. But unlike the sacrifices of the God, this modern-day data labour is hidden behind the magical name of "artificial intelligence".
+                <br>
+                The goal of the project is to make this 'data labour' visible and to question how we should accept this phenomenon in a world where AI is increasingly taking over our lives.
+                
+                </p>
+
+
+
+                
+
+            </div>
+        </div>
+
+
+        <div class="column">
+            <h2>Starting Point</h2>
+
+            <div class="content">
+                <div class="line"></div>
+
+                <p>My research started with AI recipes. I saw issues with recipe generative AI randomly generating dangerous or terrible tasting recipes without any food safety verification, and I wondered why this was happening. I also saw reckless AI tools being used, such as a mushroom identification app recommending poisonous mushrooms as edible, and I started to wonder why this was happening and why we should focus on it.</p>
+
+                <video width="800"controls>
+  <source src="Collage.mp4" type="video/mp4">
+</video>
+
+                <p>During the research process, I thought of a Chinese god I'd known before, 神農Shennong. <br>(I've always enjoyed working with motifs from mythology and folklore. This is because I believe that myths and legends contain the desires, fears, and logic of people's lives in a figurative way, and that by tracing them backwards, we can find clues to the future.)</p>
+
+              
+            </div>
+        </div>
+
+
+        <div class="column">
+            <h2>Shen nong</h2>
+            <div class="content">
+                <div class="line"></div>
+                <p>In a nutshell, he was one of the first three emperors, the first of all Chinese people, and his name is 神農Shennong, which means God Farmer, God of Agriculture. He is said to be the father of Chinese medicine and pharmacy, having tasted all the grasses in the beginning of time, dying and coming back to life 70 times, categorizing them as edible and inedible, and writing them down in a book called the Xin Nong Classic. Although he is a legendary figure, the book actually existed and has been passed down to modern times and is said to be the beginning of Chinese medicine.</p>
+
+                <img src="shennong.png" width="800px">
+
+                <details>
+1. Shennong is one of the first three emperors and ancestral deities of China, and is known as the god of agriculture and the sun.
+<br>
+2. Shennong is said to have the head of a bull and the body of a dragon. He was born in a cave called Lishan and is said to have invented agriculture after seeing a bird drop grain seeds.
+<br>
+3. One day he saw that people were getting sick, so he sought out herbs, met the emperor, and was given a new whip, which he used to help farm and harvest
+<br>
+4. He had a glass stomach, organs, and heart, so he could immediately see what he was eating: when he ate poisonous herbs, his clear stomach would turn to a black liquid. He tried hundreds of grass-es, identifying and categorizing them, until one day, just before he was about to die from a bad bite, he chewed on a leaf and his pain disappeared. That was the discovery of the tea leaf.
+<br>
+6. He is also said to have invented farming tools, and developed and categorized the nine needles used in Chinese medicine according to their use.
+<br>
+7. He vowed to taste all the grasses, so he continued to make many dangerous attempts afterward, and eventually died of poisonous herbs. His teachings were passed down in a book called the Shennong Bonchogyeng, a pharmacopoeia written by Cinnong, and he is still referred to as the founder of Chinese medicine, the origin of Chinese medicine, and so on.
+</details>
+
+
+
+<p>
+    I continued my research on 神農Shennong and consulted several documents that documented his accomplishments and appearance. I found the following interesting things.<br><br>
+
+- "repeatedly dies and survives"<br>
+- "have a transparent abdomen and heart made of glass"<br>
+- "can see their stomachs turn to black liquid when they eat poisonous herbs"<br>
+- "Experiencing and categorizing all grasses with the mind of a living saint"<br>
+
+Each of these characteristics contrasted with some of the problems I've seen with AI and society, as I've researched it and taken lectures on it.
+</p><img src="doddle1.png" width="800px"></div>
+
+
+
+        </div>
+
+
+        <div class="column">
+            <h2>Drawing Montage</h2>
+            <div class="content">
+                <div class="line"></div>
+                <img src="map1.png" width="800px">
+                <p>
+→ First, I decided to create a montage about Shennong. Although I was drawing from the legend, I didn't want that powerful image to dominate my entire project, as Shennong is one of China's most influential God. I also wanted to make sure that I don’t disrespect the culture, as it's not one that I'm a part of. So, rather than using the traditional representation of Shennong, I wanted to create my own interpretation of what Shennong looks like.
+                </p>
+<img src="ai_montage.png" width="800px">
+                <p>
+The first step was to create a montage illustration of a Shennong by prompting the generative AI with prompt taken from literature.  Based on this, I made some graphic process of simplifying, shaping, and symbolizing to create an iconic Shennong poster. I also lettered the word Shennong.</p>
+
+
+                <img src="shen1.jpg" width="600px">
+                <img src="shen2.jpg" width="600px">
+<p>
+I gave meaning to some of the symbols used in the poster, which I hope to use in other graphics, data visualizations, and other experiments in the future.
+                </p>
+                <img src="btn1.png" width="150px" style="margin: 0;">
+                <img src="btn2.png" width="150px" style="margin: 0;">
+                <img src="btn3.png" width="150px" style="margin: 0;">
+                <img src="btn4.png" width="150px" style="margin: 0;">
+                <img src="btn5.png" width="150px" style="margin: 0;">
+
+
+
+
+            </div>
+        </div>
+
+
+        <div class="column">
+            <h2>CHA Quiz, Card Web</h2>
+            <div class="content">
+                <div class="line"></div>
+                <p>The second was to create a simple quiz webpage. On the webpage, we have to label 20 unknown leaves as shinnongs. We can't do anything else but click on them one by one and try to eat them. Only after We eat them will you know if the leaves are poisonous or medicinal. 
+
+If you eat a poisonous leaf, your clear stomach will turn into a black liquid, and if your gauge fills up with all black, you'll die. 
+</p>
+            <img src="dataset.png" width="800px">
+            <img src="game.png" width="800px">
+
+
+            <p>
+Of course, this web was coded by humans (me, that is), utilized a human-created dataset, and had the correct answers determined by humans. It's not a full-blown experiment in AI, but I wanted to give a simple visualization of Sinnong's methodology.</p>
+            </div>
+        </div>
+
+
+        <div class="column">
+            <h2>Theory</h2>
+            <div class="content">
+                <div class="line"></div>
+                Actor-network theory
+                 <div class="line"></div>
+                <p>
+                According to theories of science and technology, including actor-network theory, what we consider to be "technological" or "machine agency" is actually the result of the intersection of the human and the material, and the exchange of attributes between them.
+                </p> 
+                <p>
+                This may seem obvious, but when we hear the phrase "people who work with AI," what do we think of? Developers? Researchers? Designers like us?
+                </p> 
+                <p>
+                Typical deep learning techniques rely on giant neural networks with millions of neurons organized in multiple layers. This requires a huge amount of diverse data to learn. We need to have enough accurate and relevant data to "train" the AI. 
+                </p> 
+                <p>
+                As the saying goes, if you put garbage in, you get garbage out, so the quantity and quality of this data determines the accuracy of the AI's predictions and classifications.
+                </p> 
+
+
+                <div class="line"></div>
+                AI's Black Box
+                 <div class="line"></div>
+                 
+                <p>All this data, the foundation of AI, needs to be labeled. Do you remember the first workshop where we had to label ourselves over 100 images? 
+                </p> 
+                <p>
+                Of course, as data gets bigger, we have the technology to do the labeling on AI, but if no one is doing the "human labeling," how can AI be self-correcting? This, along with the AI black box problem, can easily lead to dystopia.
+                </p> 
+                <img src="ouroboros.png" width="800px">
+
+
+               
+                <p>
+                These currently dominant AI technologies rely heavily on human labor to train them, and without the help of human labor, AI cannot function as we expect.
+                </p>
+
+
+
+
+        <div class="line"></div> Mechanical Turk <div class="line"></div>
+                <p>
+                <img src="turk.jpeg" width="800px">
+                This is a mechanical turk, which literally means "mechanical Turkish" and refers to an automaton robot in the shape of a Turkish man who became famous in 18th century Europe for playing chess by himself. As you can see in the picture above, it was later discovered that the mechanical turk was not an automaton, but a human chess player under the table.</p>
+
+                <p>
+                - Google reportedly employs around 10,000 people directly or indirectly to do 'Content Management'. Google designs its user interfaces as if this is done by "magical" algorithms, but as a former engineer revealed, human workers are responsible for this.<br>
+                - Microsoft has a division called the "Universal Human Relevance System" to fulfill this task.<br>
+                - Facebook recently announced that it is expanding its content moderation staff from 4,500 to 7,500.</p>
+
+     
+            <div class="line"></div>HITL
+                <div class="line"></div>
+                <img src="HITL.png" width="800px">
+
+                <p>Behind the curtain of artificial intelligence, which is supposed to be able to make its own decisions, human workers are busy. We only think that A.I. is helping us humans, but in reality, humans are helping A.I. behind the scenes. AI is working as if it were a human, but humans are working as if it were an AI. They are called "human-in-the-loop" because they are always working in the algorithmic loop that makes AI work.</p>
+                <h6>*Human-in-the-loop : In machine learning, HITL is used in the sense of humans aiding the computer in making the correct decisions in building a model.</h6>
+<div class="line"></div>
+
+                <p>So who are the "humans in the loop"?
+                Who are the human workers who are labeling data for AI and adjusting content on behalf of AI? How are they working and under what conditions? </p>
+
+                <div class="line"></div>
+                <p>These are mostly low-income workers in the U.S. or contract laborers from underdeveloped countries like the Philippines and India who speak English.</p>
+                
+            </div>
+        </div>
+
+
+
+        <div class="column">
+            <h2>Research Question</h2>
+            <div class="content">
+                <div class="line"></div>
+
+            <p>
+                So I'm going to use Sinnong's "data labeling" as an echo of HITL in today's society, and use it as a metaphorical critique of the problems that society has and is ignoring. Going a little further, it's also about sanctifying and reclaiming labor itself, interpreting the act of the legendary god and originator of medicine as the first data labeling, HITL.
+                </p> 
+                <p>
+                At this point, my research question is this:
+                </p> 
+                <h1>
+                How can we focus on the sacrifice(labor) behind AI?
+                </h1> 
+                <p>
+                My approach to this question is to be critical, but not blindly skeptical, and to present an idealized view. Because while the use of AI is an irresistible trend, I don't believe in using it without knowing what's behind it. 
+                </p>
+
+            </div>
+        </div>
+
+
+
+        <div class="column">
+            <h2>Positioning</h2>
+            <div class="content">
+                <div class="line"></div>
+                <p>
+                - My position
+                <br>
+                I wanted to find a solution to this problem as a designer, rather than a researcher or a technologist. (It was more of an impossibility than a matter of preference; I actually tried to program my own AI for about two weeks, but it didn't work).
+                </p> 
+                <p>
+
+                - Audience
+                <br>
+                The audience for this project is people who think AI is just a "gimmick" or a "sage who knows everything," and the my project goal is to give them a chance to think again.
+                </p> 
+                <p>
+
+                - Direction
+                <br>
+                When critiquing the problems associated with the use of AI and trying to provide an ideal direction, what can I do, other than program the AI myself? How can I get to the heart of the matter without getting too superficial, personal, or sentimental?</p>
+<div class="line"></div>
+
+                <p>
+                → Highlight real issues and make people aware of them 
+                <br>⇒ archiving, documentation (ex. The Cleaners(2018), about content moderators in the Philippines)
+                </p> 
+                <p>
+                → Set up a hypothetical, prescient model <br>⇒ virtual branding, storytelling, characters and narratives. (ex. Jinah Roh)
+                </p>
+                <p><div class="un">
+                → Make people feel it firsthand through experience 
+                <br>⇒ interactive games, surveys, workshop (ex. Tomo Kihara)</div>
+                </p> 
+                
+
+<div class="line"></div>
+                <p>
+                <img src="3D.png" width="800px">
+                <img src="3D1.png" width="800px">
+                <img src="3D2.png" width="800px">
+                <img src="3D4.png" width="800px">
+               As a designer, not a technologist or researcher, I decided to take responsibility for the project in a visual language. Believing in the power of metaphor, I wanted to have a powerful analogy to communicate about data moderation. I wanted to create a graphic design 'language', a symbol, to compare the process and outcome of reality and myth, to sculpt the gap between them.
+                </p>
+
+
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</body>
+</html>

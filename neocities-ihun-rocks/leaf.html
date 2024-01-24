@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>p5.js Canvas</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+  <div>
+  </div>
+
+  <script>
+    let points = [];
+    let connected = [];
+    let currentIndex = 0;
+    let drawSpeed = 1; // 선을 그리는 속도 (값이 클수록 느리게)
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight);
+      background(255);
+
+      // 365개의 랜덤한 점 생성
+      for (let i = 0; i < 365; i++) {
+        let x = random(width);
+        let y = random(height);
+        points.push(createVector(x, y));
+      }
+
+      // 각 점을 연한 회색 동그라미로 표시
+      for (let i = 0; i < points.length; i++) {
+        fill(200);
+        noStroke();
+        ellipse(points[i].x, points[i].y, 10);
+        textSize(8);
+        fill(200);
+        text(i + 1, points[i].x + 3, points[i].y - 5); // 숫자 표시
+      }
+
+      // 첫 번째 점을 시작으로 그리기
+      currentIndex = 0;
+      connected.push(points[currentIndex]);
+    }
+
+    function draw() {
+      // 다음 점이 존재한다면
+      if (connected.length < points.length) {
+        let closestIndex = -1;
+        let closestDist = Infinity;
+
+        // 현재 점과 가장 가까운 다음 점 찾기
+        for (let i = 0; i < points.length; i++) {
+          if (!connected.includes(points[i])) {
+            let d = dist(
+              points[currentIndex].x,
+              points[currentIndex].y,
+              points[i].x,
+              points[i].y
+            );
+            if (d < closestDist) {
+              closestDist = d;
+              closestIndex = i;
+            }
+          }
+        }
+
+        // 다음으로 가장 가까운 점을 찾았다면 연결하고 선을 그리기
+        if (closestIndex !== -1) {
+          currentIndex = closestIndex;
+          connected.push(points[currentIndex]);
+          stroke(200);
+          line(
+            connected[connected.length - 2].x,
+            connected[connected.length - 2].y,
+            points[currentIndex].x,
+            points[currentIndex].y
+          );
+
+          // 선을 그린 후 일정 시간 지연
+          noLoop();
+          setTimeout(() => {
+            loop();
+          }, drawSpeed * 1000);
+        }
+      } else {
+        // 모든 점을 연결한 경우
+
+        // 첫 번째 점과 마지막 점을 연결하여 다각형 완성
+        stroke(200);
+        line(
+          connected[connected.length - 1].x,
+          connected[connected.length - 1].y,
+          connected[0].x,
+          connected[0].y
+        );
+
+        // 연결된 점으로 다각형 형성 후 내부를 연한 회색으로 채우기
+        beginShape();
+        fill(200);
+        for (let i = 0; i < connected.length; i++) {
+          vertex(connected[i].x, connected[i].y);
+        }
+        endShape(CLOSE);
+
+        // 모든 선이 그려진 후 3초 후에 새로고침
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
+      }
+    }
+
+    function saveImage() {
+      saveCanvas('connected_points', 'png');
+    }
+  </script>
+</body>
+</html>

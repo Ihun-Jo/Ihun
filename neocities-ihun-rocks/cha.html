@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cha Quiz</title>
+    <style>
+        @font-face {
+            font-family: 'mori';
+            src: url('PPMori-SemiBold.otf') format('opentype');
+        }
+
+        #answer-message  {
+            padding: 10px;
+            background-color: black;
+            color: white;
+        }
+
+
+        iframe {
+            z-index: -999;
+            position: absolute;
+            height: 100vh;
+            width: 100vw;
+        }
+
+
+
+        body {
+            font-family: 'mori';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+        }
+        .quiz-container {
+            text-align: center;
+        }
+        .question {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .answers {
+            display: ;
+            width: 80vw;
+        }
+        .answer {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            border: black 1px;
+            filter: drop-shadow(1px 1px);
+            cursor: pointer;
+            height: 30px;
+            width: 120px;
+            filter: drop-shadow(1px 1px 1px black);
+            display:  inline-block;
+            -webkit-transition: -webkit-filter .5s;
+            transition: filter .5s;
+        }
+        .answer:hover {
+            filter: drop-shadow(-10px 15px 0.5px black);
+            background-color: white;
+            animation: breath 1s linear;
+            scale: 1.3;
+            z-index: 9999;
+        }
+        .life-gauge {
+            display: flex;
+            top: 40vh;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            transition-timing-function: ease;
+        }
+        .life-bar {
+            width: 150px;
+            height: 20px;
+            background-color: #2ecc71;
+            margin: 0px;
+        }
+
+
+
+        .success-message {
+            font-size: 40px;
+            position: fixed;
+            width: 40vw;
+            z-index: 99;
+            transform: translate(-50%, -50%);
+            top: 50vh;
+            left: 50vw;
+            color: black;
+            background-color: black;
+            color: white;
+            padding: 100px;
+            display: none;
+        }
+
+
+
+        @keyframes smooth {
+        }
+
+
+        .question {
+            background-color: black;
+            color: white;
+            font-size: 20pt;
+            margin-bottom: 30px;
+        }
+
+        .answer img {
+  width: 100px;
+  height: 100px; 
+border-radius: 50%}
+
+
+.conta {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 300px;
+    width: 500px;
+}
+
+details {
+    position: relative;
+    background: white;
+    filter: drop-shadow(black 1px 1px);
+    z-index:100;
+    margin: 3px;
+    padding: 3px;
+}
+
+summary {
+    position: relative;
+    background: white;
+    filter: drop-shadow(black 1px 1px);
+    margin: 3px;
+    padding: 3px;
+}
+
+a {
+  color: inherit; }
+
+    </style>
+
+
+    <script type="text/javascript">
+        // 이미지 경로 배열을 만듭니다. 원하는 이미지 경로를 추가하세요.
+const imagePaths = [
+    'leaf/1.png',
+    'leaf/2.png',
+    'leaf/3.png',
+    'leaf/4.png',
+    'leaf/5.png',
+    'leaf/6.png',
+    'leaf/7.png',
+    'leaf/8.png',
+    'leaf/9.png',
+    'leaf/10.png',
+    'leaf/11.png',
+    'leaf/12.png',
+    'leaf/13.png',
+    'leaf/14.png',
+    'leaf/15.png',
+    'leaf/16.png',
+    'leaf/17.png',
+    'leaf/18.png',
+    'leaf/19.png',
+    'leaf/20.png',
+];
+
+// 이미지를 무작위로 선택하는 함수
+function getRandomImage() {
+    const randomIndex = Math.floor(Math.random() * imagePaths.length);
+    return imagePaths.splice(randomIndex, 1)[0];
+}
+
+// 페이지가 로드될 때 이미지를 설정합니다.
+window.addEventListener('load', () => {
+    const answerElements = document.querySelectorAll('.answer');
+    answerElements.forEach((answerElement) => {
+        const imgElement = answerElement.querySelector('img');
+        imgElement.src = getRandomImage();
+    });
+});
+
+// 새로고침 버튼을 클릭할 때 이미지를 변경합니다.
+const reloadButton = document.querySelector('#reloadButton');
+reloadButton.addEventListener('click', () => {
+    imagePaths.length = 0; // 이미지 경로 배열 초기화
+    imagePaths.push(
+        'leaf/1.png',
+        'leaf/2.png',
+        'leaf/3.png',
+        'leaf/4.png',
+        'leaf/5.png',
+        'leaf/6.png',
+        'leaf/7.png',
+        'leaf/8.png',
+        'leaf/9.png',
+        'leaf/10.png',
+        'leaf/11.png',
+        'leaf/12.png',
+        'leaf/13.png',
+        'leaf/14.png',
+        'leaf/15.png',
+        'leaf/16.png',
+        'leaf/17.png',
+        'leaf/18.png',
+        'leaf/19.png',
+        'leaf/20.png'
+    );
+
+    const answerElements = document.querySelectorAll('.answer');
+    answerElements.forEach((answerElement) => {
+        const imgElement = answerElement.querySelector('img');
+        imgElement.src = getRandomImage();
+    });
+});
+
+    </script>
+
+
+</head>
+<body>
+
+
+<div class="conta">
+<details>
+<summary> What is this game about? </summary>
+-> A trivia game to reexaminate <a href="https://en.wikipedia.org/wiki/Shennong">Shennong</a>, the ancestor of content moderation, who tasted 365 types of grass and died trying to sort them himself. It's not exactly a trivia game, because no one knows the answers until they taste them. But the sacrifice is a noble one. 
+</details>
+
+<details>
+<summary>  Where did the image come from? </summary>
+-> Generated by randomly pulling images from the 'Grass' part of Google's graffiti dataset called <a href="https://quickdraw.withgoogle.com/data">'Qick! Draw'</a>. 
+</details>
+
+<details>
+<summary>  What does the background mean? </summary>
+-> It's 365 random dots and code that strokes them together to create a pattern. Imagine Sinnong's great journey, and the tens of thousands of data moderators, with countless dots on the screen. 
+</details>
+
+
+</div>
+
+
+<iframe src="leaf.html"></iframe>
+    <div class="quiz-container">
+        <div class="question">Which grasses are poisonous and which are medicinal?</div>
+        <div class="answers">
+            <div class="answer" onclick="checkAnswer(this, false)">grass?
+                <img src="" alt="Random Image"></div>
+            <div class="answer" onclick="checkAnswer(this, false)">grass?
+                <img src="" alt="Random Image" id="shadow">  </div>
+            <div class="answer" onclick="checkAnswer(this, true)">herb?
+                <img src="" alt="Random Image" id="shadow">  </div>
+            <div class="answer" onclick="checkAnswer(this, false)">grass?
+                <img src="" alt="Random Image" id="shadow">  </div>
+            <div class="answer" onclick="checkAnswer(this, true)">tea?
+                <img src="" alt="Random Image" id="shadow">  </div>
+            <div class="answer" onclick="checkAnswer(this, false)">leaf?
+                <img src="" alt="Random Image" id="shadow">  </div>
+            <div class="answer" onclick="checkAnswer(this, false)">tobacco?
+                <img src="" alt="Random Image" id="shadow">  </div>
+            <div class="answer" onclick="checkAnswer(this, true)">weed?
+                <img src="" alt="Random Image" id="shadow">  </div>
+            <div class="answer" onclick="checkAnswer(this, false)">grass?
+                <img src="" alt="Random Image" id="shadow">  </div>
+            <div class="answer" onclick="checkAnswer(this, false)">fruit?
+                <img src="" alt="Random Image" id="shadow">  </div>
+            <div class="answer" onclick="checkAnswer(this, false)">leaf?
+                <img src="" alt="Random Image" id="shadow">  </div>
+            <div class="answer" onclick="checkAnswer(this, false)">toxic?
+             <img src="" alt="Random Image" id="shadow" > </div>
+      
+            <div class="answer" onclick="checkAnswer(this, false)">bitter?
+             <img src="" alt="Random Image" id="shadow"> </div>
+            <div class="answer" onclick="checkAnswer(this, false)">cure?
+             <img src="" alt="Random Image" id="shadow"> </div>
+            <div class="answer" onclick="checkAnswer(this, false)">grass?
+             <img src="" alt="Random Image" id="shadow"> </div>
+            <div class="answer" onclick="checkAnswer(this, false)">grass?
+             <img src="" alt="Random Image" id="shadow"> </div>
+        </div>
+
+
+        <br><br><h3>Shennong Guage</h3>
+
+
+        <div class="life-gauge">
+            <div id="life-gauge-1" class="life-bar"></div>
+            <div id="life-gauge-2" class="life-bar"></div>
+            <div id="life-gauge-3" class="life-bar"></div>
+            <div id="life-gauge-4" class="life-bar"></div>
+            <div id="life-gauge-5" class="life-bar"></div>
+            <div id="life-gauge-6" class="life-bar"></div>
+            <div id="life-gauge-7" class="life-bar"></div>
+            <div id="life-gauge-8" class="life-bar"></div>
+        </div>
+
+
+        <div class="success-message" id="success-message">
+            You've succeeded in practicing Shinnong's methodology. Help future generations by spreading this knowledge.
+        </div>
+
+
+        <div><br><br><span id="answer-message"></span></div>
+
+
+    </div>
+    
+    <script>
+
+        function reloadPage() {
+            location.reload(); // Reload the current page
+        }
+
+
+        let life = 8;
+
+        function checkAnswer(answerElement, isCorrect) {
+            answerElement.style.display = "none";
+            if (isCorrect) {
+                if (document.querySelectorAll('.answer:visible').length === 0) {
+                    showSuccessMessage();
+                }
+            } else {
+                loseLife();
+            }
+        }
+
+
+
+        function loseLife() {
+            life--;
+            if (life <= 0) {
+                alert("You Dead. How sacrificial.");
+                reloadPage();
+            } else {
+                updateLifeGauge();
+            }
+        }
+
+        function resetLife() {
+            life = 8;
+            updateLifeGauge();
+        }
+
+        function updateLifeGauge() {
+            for (let i = 1; i <= 8; i++) {
+                const lifeBar = document.getElementById(`life-gauge-${i}`);
+                if (i <= life) {
+                    lifeBar.style.backgroundColor = "lightgray"; // 정답 시 생명 게이지 색상
+                } else {
+                    lifeBar.style.backgroundColor = "black"; // 오답 시 생명 게이지 색상
+                }
+            }
+
+        }
+
+        // checkAnswer 함수에서 정답을 선택했을 때 라이프 게이지를 증가시킴
+function checkAnswer(answerElement, isCorrect) {
+            answerElement.style.display = "none";
+
+            // 답이 true 또는 false인지 메시지를 표시
+            const answerMessage = document.getElementById('answer-message');
+            answerMessage.textContent = isCorrect ? 'Medicine' : 'Poisonous';
+
+            if (isCorrect) {
+                increaseLife(3);
+            } else {
+                loseLife();
+            }
+
+            // 새로 만든 함수를 호출합니다.
+            checkAndShowSuccess();
+        }
+
+
+
+
+        function checkAndShowSuccess() {
+    if (document.querySelectorAll('.answer:not([style*="display: none;"])').length === 0) {
+        showSuccessMessage();
+    }
+}
+
+
+
+
+        // 라이프 게이지를 증가시키는 함수
+
+        function increaseLife(amount) {
+            if (life + amount <= 8) {
+                life += amount;
+            } else {
+                life = 8;
+            }
+            updateLifeGauge();
+        }
+
+
+
+function showSuccessMessage() {
+    const successMessage = document.querySelector('.success-message');
+    successMessage.style.display = "block"; 
+}
+
+        updateLifeGauge();
+
+
+            function initGame() {
+            life = 8;
+            updateLifeGauge();
+            reloadButton.style.display = 'block';
+            document.querySelector('.success-message').style.display = 'none';
+            const answerElements = document.querySelectorAll('.answer');
+            answerElements.forEach((answerElement) => {
+                answerElement.style.display = 'block';
+                const imgElement = answerElement.querySelector('img');
+                imgElement.src = getRandomImage();
+            });
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>
